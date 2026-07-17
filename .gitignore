@@ -137,6 +137,14 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
+# Astro
+.astro/
+dist/
+
+# AI editor folders (optional)
+.cline/
+.claude/
+.cursor/
 # Vite files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
