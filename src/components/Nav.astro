@@ -1,0 +1,101 @@
+---
+const links = [
+  { label: 'Frames', href: '#frames' },
+  { label: 'Brands', href: '#brands' },
+  { label: 'Lenses', href: '#lenses' },
+  { label: 'Services', href: '#services' },
+  { label: 'Visit', href: '#visit' },
+];
+---
+
+<header
+  data-nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="background-color: transparent;"
+>
+  <nav
+    class="container-page flex items-center justify-between"
+    style="height: 56px;"
+    aria-label="Primary"
+  >
+    <a href="#top" class="flex items-center gap-2" aria-label="Dawoodi Opticals home">
+      <span
+        class="inline-flex items-center justify-center"
+        style="width:28px;height:28px;border-radius:9999px;background:var(--color-ink);color:var(--color-on-primary);font-weight:600;font-size:14px;"
+        >D</span
+      >
+      <span class="eyebrow" style="letter-spacing:-0.2px;">Dawoodi Opticals</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="body-sm no-underline transition-colors"
+              style="color:var(--color-ink-muted);"
+              onmouseover="this.style.color='var(--color-ink)'"
+              onmouseout="this.style.color='var(--color-ink-muted)'"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="hidden md:block">
+      <a href="#visit" class="btn-primary btn-text no-underline">Book Eye Test</a>
+    </div>
+
+    <button
+      data-nav-toggle
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      style="background:none;border:none;cursor:pointer;"
+    >
+      <span style="display:block;width:22px;height:2px;background:var(--color-ink);"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--color-ink);"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--color-ink);"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    data-nav-menu
+    class="md:hidden hidden"
+    style="background:var(--color-canvas);border-top:1px solid var(--color-hairline);"
+  >
+    <ul class="container-page flex flex-col gap-1 list-none m-0 py-4">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="block py-3 headline no-underline"
+              style="color:var(--color-ink);"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-3">
+        <a href="#visit" class="btn-primary btn-text no-underline w-full">Book Eye Test</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  [data-nav].is-scrolled {
+    background-color: var(--color-canvas) !important;
+    border-bottom: 1px solid var(--color-hairline);
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+  [data-nav-menu].is-open {
+    display: block !important;
+  }
+</style>

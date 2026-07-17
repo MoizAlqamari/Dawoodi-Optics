@@ -1,0 +1,64 @@
+---
+import { frames } from '../../data/content';
+---
+
+<section id="frames" class="section-pad">
+  <div class="container-page">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="eyebrow reveal" style="color:var(--color-ink-muted);">Featured Frames</p>
+        <h2 class="display-lg reveal" data-reveal-delay="80" style="margin-top:12px; max-width: 16ch;">
+          Frames worth wearing every day.
+        </h2>
+      </div>
+      <p class="body-lg reveal" data-reveal-delay="160" style="max-width: 38ch; color:var(--color-ink-muted);">
+        Each pair is chosen for its craft, comfort, and character — presented
+        the way it deserves.
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        frames.map((frame, i) => (
+          <article
+            data-frame-card
+            class="reveal card-surface flex flex-col"
+            data-reveal-delay={i * 80}
+            style="border:1px solid var(--color-hairline);"
+          >
+            <div
+              class="overflow-hidden"
+              style="border-radius: var(--radius-lg); background: {frame.accent}; aspect-ratio: 4/3;"
+            >
+              <img
+                data-frame-img
+                src={frame.image}
+                alt={`${frame.name} by ${frame.brand}`}
+                loading="lazy"
+                class="w-full h-full object-cover"
+                style="will-change: transform; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);"
+              />
+            </div>
+            <div class="flex items-center justify-between mt-5">
+              <span class="caption" style="color:var(--color-ink-tertiary); letter-spacing:0.4px; text-transform:uppercase;">
+                {frame.category}
+              </span>
+              <span class="caption" style="color:var(--color-ink-subtle);">
+                {frame.brand}
+              </span>
+            </div>
+            <h3 class="card-title" style="margin-top:8px;">{frame.name}</h3>
+            <p class="body-sm" style="margin-top:8px; color:var(--color-ink-muted); line-height:1.55;">
+              {frame.description}
+            </p>
+            {frame.price && (
+              <p class="eyebrow" style="margin-top:16px; color:var(--color-ink);">
+                {frame.price}
+              </p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

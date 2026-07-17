@@ -1,0 +1,43 @@
+---
+import { services } from '../../data/content';
+---
+
+<section id="services" class="section-pad" style="background:var(--color-surface-2);">
+  <div class="container-page">
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-12 items-center mb-12">
+      <div>
+        <p class="eyebrow reveal" style="color:var(--color-ink-muted);">Eye Testing</p>
+        <h2 class="display-lg reveal" data-reveal-delay="80" style="margin-top:12px; max-width: 16ch;">
+          A proper eye test, without the wait.
+        </h2>
+      </div>
+      <p class="body-lg reveal" data-reveal-delay="160" style="color:var(--color-ink-muted);">
+        Our optometrists take the time most clinics don't. Thorough, calm, and
+        explained in plain language — so your prescription is exactly right.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        services.map((s, i) => (
+          <div
+            class="reveal card-surface"
+            data-reveal-delay={i * 60}
+            style="border:1px solid var(--color-hairline);"
+          >
+            <span
+              class="inline-flex items-center justify-center"
+              style="width:36px;height:36px;border-radius:9999px;background:var(--color-canvas);color:var(--color-ink);font-weight:500;font-size:14px;"
+            >
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="card-title" style="margin-top:16px; font-size:20px;">{s.title}</h3>
+            <p class="body-sm" style="margin-top:8px; color:var(--color-ink-muted); line-height:1.55;">
+              {s.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

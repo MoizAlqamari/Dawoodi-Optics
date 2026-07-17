@@ -1,0 +1,87 @@
+---
+const year = new Date().getFullYear();
+const columns = [
+  {
+    title: 'Explore',
+    links: [
+      { label: 'Featured Frames', href: '#frames' },
+      { label: 'Brands', href: '#brands' },
+      { label: 'Lens Technology', href: '#lenses' },
+    ],
+  },
+  {
+    title: 'Services',
+    links: [
+      { label: 'Eye Testing', href: '#services' },
+      { label: 'Prescription Glasses', href: '#services' },
+      { label: 'Contact Lenses', href: '#services' },
+    ],
+  },
+  {
+    title: 'Visit',
+    links: [
+      { label: 'North Nazimabad, Karachi', href: '#visit' },
+      { label: 'Mon–Sun · 11:00–21:00', href: '#visit' },
+      { label: 'Book an appointment', href: '#visit' },
+    ],
+  },
+];
+---
+
+<footer style="background:var(--color-canvas);" class="hairline-b">
+  <div class="container-page" style="padding:64px 24px;">
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span
+            class="inline-flex items-center justify-center"
+            style="width:28px;height:28px;border-radius:9999px;background:var(--color-ink);color:var(--color-on-primary);font-weight:600;font-size:14px;"
+            >D</span
+          >
+          <span class="eyebrow" style="letter-spacing:-0.2px;">Dawoodi Opticals</span>
+        </div>
+        <p class="caption" style="color:var(--color-ink-muted);max-width:280px;line-height:1.6;">
+          A premium eyewear boutique in North Nazimabad, Karachi. Curated frames,
+          expert eye testing, and lens craftsmanship.
+        </p>
+      </div>
+
+      {
+        columns.map((col) => (
+          <div>
+            <h4 class="eyebrow mb-4" style="color:var(--color-ink);">
+              {col.title}
+            </h4>
+            <ul class="list-none m-0 p-0 flex flex-col gap-3">
+              {col.links.map((l) => (
+                <li>
+                  <a
+                    href={l.href}
+                    class="caption no-underline transition-colors"
+                    style="color:var(--color-ink-muted);"
+                    onmouseover="this.style.color='var(--color-ink)'"
+                    onmouseout="this.style.color='var(--color-ink-muted)'"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mt-12 pt-6"
+      style="border-top:1px solid var(--color-hairline-soft);"
+    >
+      <p class="caption m-0" style="color:var(--color-ink-tertiary);">
+        © {year} Dawoodi Opticals. All rights reserved.
+      </p>
+      <p class="caption m-0" style="color:var(--color-ink-tertiary);">
+        Designed in Karachi · Crafted with care
+      </p>
+    </div>
+  </div>
+</footer>

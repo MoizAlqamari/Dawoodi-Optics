@@ -1,0 +1,65 @@
+---
+const tech = [
+  {
+    title: 'Blue Light Filter',
+    body: 'Soften screen fatigue with lenses tuned for long days at the desk.',
+  },
+  {
+    title: 'Anti-Reflective Coating',
+    body: 'Crisp, glare-free vision and clearer photos — no window glare.',
+  },
+  {
+    title: 'Photochromic',
+    body: 'Lenses that adapt from clear indoors to tinted in sunlight.',
+  },
+  {
+    title: 'High-Index Thin',
+    body: 'Strong prescriptions, beautifully slim and light profiles.',
+  },
+  {
+    title: 'Polarised Sun',
+    body: 'Cut glare on water and road for true, comfortable colour.',
+  },
+  {
+    title: 'Scratch Shield',
+    body: 'A durable hard coat that keeps lenses looking new, longer.',
+  },
+];
+---
+
+<section id="lenses" class="section-pad">
+  <div class="container-page">
+    <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+      <div>
+        <p class="eyebrow reveal" style="color:var(--color-ink-muted);">Lens Technology</p>
+        <h2 class="display-lg reveal" data-reveal-delay="80" style="margin-top:12px; max-width: 14ch;">
+          The lens does the seeing.
+        </h2>
+        <p class="body-lg reveal" data-reveal-delay="160" style="margin-top:16px; color:var(--color-ink-muted); max-width: 40ch;">
+          We pair every frame with precision-ground lenses and coatings engineered
+          for how you actually live — work, drive, and wander.
+        </p>
+        <a href="#visit" class="btn-secondary btn-text no-underline reveal" data-reveal-delay="240" style="margin-top:28px;">
+          Talk to a specialist
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        {
+          tech.map((t, i) => (
+            <div
+              class="reveal card-surface"
+              data-reveal-delay={i * 60}
+              style="border:1px solid var(--color-hairline);"
+            >
+              <h3 class="card-title" style="font-size:18px;">{t.title}</h3>
+              <p class="body-sm" style="margin-top:8px; color:var(--color-ink-muted); line-height:1.55;">
+                {t.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

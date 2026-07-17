@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { initMotion } from '../scripts/motion.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Dawoodi Opticals — Premium Eyewear Boutique, North Nazimabad, Karachi',
+  description = 'A premium eyewear boutique in North Nazimabad, Karachi. Curated frames from Oliver Peoples, Leica, Gentle Monster & Warby Parker, expert eye testing, and lens craftsmanship.',
+  image = 'https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=1200&q=80',
+} = Astro.props;
+
+const siteUrl = 'https://dawoodiopticals.com';
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_PK" />
+    <meta property="og:site_name" content="Dawoodi Opticals" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Fonts: Inter (Saans substitute) + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Optician',
+      name: 'Dawoodi Opticals',
+      image: image,
+      url: siteUrl,
+      telephone: '+92-300-0000000',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Karachi',
+        addressRegion: 'Sindh',
+        addressCountry: 'PK',
+        streetAddress: 'North Nazimabad',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 24.9307,
+        longitude: 67.0347,
+      },
+      openingHours: 'Mo-Su 11:00-21:00',
+      priceRange: 'PKR',
+      servesCuisine: 'Eyewear',
+    })} />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import { initMotion } from '../scripts/motion.ts';
+      initMotion();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+---
+const reasons = [
+  {
+    title: 'Curated, not crowded',
+    body: 'A tight edit of frames we would wear ourselves — no endless racks, no noise.',
+  },
+  {
+    title: 'Fitted by hand',
+    body: 'Every pair is adjusted in-store until it sits exactly right. Comfort is the product.',
+  },
+  {
+    title: 'Honest advice',
+    body: 'We tell you what suits your face and life — not what costs the most.',
+  },
+  {
+    title: 'Crafted lenses',
+    body: 'Precision-ground optics with coatings matched to how you use your eyes.',
+  },
+];
+---
+
+<section class="section-pad">
+  <div class="container-page">
+    <div class="mb-12 max-w-2xl">
+      <p class="eyebrow reveal" style="color:var(--color-ink-muted);">Why Choose Us</p>
+      <h2 class="display-lg reveal" data-reveal-delay="80" style="margin-top:12px;">
+        A boutique, not a checklist.
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-px" style="background:var(--color-hairline); border:1px solid var(--color-hairline); border-radius:var(--radius-xl); overflow:hidden;">
+      {
+        reasons.map((r, i) => (
+          <div class="reveal" data-reveal-delay={i * 60} style="background:var(--color-canvas); padding:40px;">
+            <h3 class="headline" style="font-size:24px;">{r.title}</h3>
+            <p class="body-lg" style="margin-top:12px; color:var(--color-ink-muted); max-width:42ch;">
+              {r.body}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
